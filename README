@@ -2,24 +2,24 @@
 
 Original source of this plugin : http://code.google.com/p/rhythmbox-ampache/
 
-Ampache setup
+# Ampache setup
 
 Read Ampache Access Control Lists documentation and create an ACL for RPC (XML API)
 	http://ampache.org/wiki/config:acl
 
-Rhythmbox setup
+# Rhythmbox setup
 
-Untar and put the ampache directory into $HOME/.gnome2/rhythmbox/plugins
-or /usr/lib/rhythmbox/plugins
+Create an ampache directory, untar and put files into it then put this directory into 
+$HOME/.gnome2/rhythmbox/plugins or /usr/lib/rhythmbox/plugins
 
-Run rhythmbox (preferable with "-D ampache" from command line)
+Run rhythmbox (with "-D ampache" if you want debug from command line)
 
 Click Edit, select Plugins dialog box, enable "Ampache Library"
 
-Click Configure, enter your infromation, for example URL:
+Click Configure, enter your informations, for example URL:
 	http://test.com/server/xml.server.php
 
-Click on Ampache under Library, songs should appear in the browser
+Click on Ampache under Shared, songs should appear in the browser
 
 
 # COPYRIGHT
