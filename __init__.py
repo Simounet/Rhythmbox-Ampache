@@ -38,7 +38,11 @@ class Ampache(rb.Plugin):
 		self.entry_type.sync_metadata = None
 		self.entry_type.category = rhythmdb.ENTRY_STREAM
 
-		group = rb.rb_source_group_get_by_name(self.config.get("group"))
+		theme = gtk.icon_theme_get_default()
+		rb.append_plugin_source_path(theme, "/icons/")
+		width, height = gtk.icon_size_lookup(gtk.ICON_SIZE_LARGE_TOOLBAR)
+		#icon = rb.try_load_icon(theme, "ampache", width, 0)
+		group = rb.rb_display_page_group_get_by_id ("shared")
 		if not group:
 			group = rb.rb_source_group_register (
 				"ampache",
@@ -50,16 +54,27 @@ class Ampache(rb.Plugin):
 		self.source = gobject.new (
 			AmpacheBrowser,
  			entry_type=self.entry_type,
-			source_group=group,
+			plugin=self,
  			name=self.config.get("name"),
  			shell=shell,
 		)
 
 		self.config.set("icon_filename", self.find_file(self.config.get("icon")))
+
+		#icon = rb.try_load_icon(theme, "ampache", width, 0)
+		icon = gtk.gdk.pixbuf_new_from_file_at_size(self.config.get("icon_filename"), width, height)
+
+		self.source = gobject.new (AmpacheBrowser,
+								   shell=shell,
+								   entry_type=self.entry_type,
+								   plugin=self,
+								   name=self.config.get("name"),
+								   pixbuf=icon)
+
 		self.source.activate(self.config)
 
 		shell.register_entry_type_for_source(self.source, self.entry_type)
-		shell.append_source(self.source, None)
+		shell.append_display_page(self.source, group)
 
 		ui_manager = shell.get_ui_manager()
 		action = gtk.Action('RefetchAmpache', 

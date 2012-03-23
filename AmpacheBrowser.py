@@ -83,7 +83,7 @@ class AmpacheBrowser(rb.BrowserSource):
 
 		width, height      = gtk.icon_size_lookup(gtk.ICON_SIZE_LARGE_TOOLBAR)
 		icon               = gtk.gdk.pixbuf_new_from_file_at_size(self.config.get("icon_filename"), width, height)
-		self.set_property( "icon",  icon) 
+		#self.set_property( "icon",  icon) 
 
 		shell              = self.get_property("shell")
 		self.db            = shell.get_property("db")
