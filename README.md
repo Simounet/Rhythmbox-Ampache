@@ -1,5 +1,6 @@
 # INFO
 
+This version of the plugin works ONLY with Rhythmbox 2 (last tested: v2.96). You can get the plugin's version for Rhythmbox 3 on [the lotan rhythmbox-ampache repository](https://github.com/lotan/rhythmbox-ampache).
 Original source of this plugin : http://code.google.com/p/rhythmbox-ampache/
 
 # Ampache setup
